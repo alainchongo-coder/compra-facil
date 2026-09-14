@@ -1,0 +1,8 @@
+[
+ {"id":"p1","name":"Audífonos inalámbricos Bluetooth","price":24.99,"category":"Electrónica","icon":"🎧","stock":20,"active":true},
+ {"id":"p2","name":"Smartwatch con monitor de salud","price":39.99,"category":"Electrónica","icon":"⌚","stock":15,"active":true},
+ {"id":"p3","name":"Juego de ollas de 10 piezas","price":59.99,"category":"Cocina","icon":"🍳","stock":10,"active":true},
+ {"id":"p4","name":"Tenis deportivos unisex","price":34.99,"category":"Ropa","icon":"👟","stock":25,"active":true},
+ {"id":"p5","name":"Freidora de aire 5 L","price":69.99,"category":"Cocina","icon":"🍟","stock":8,"active":true},
+ {"id":"p6","name":"Lámpara LED de escritorio","price":19.99,"category":"Hogar","icon":"💡","stock":30,"active":true}
+]

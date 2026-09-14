@@ -1,0 +1,10 @@
+{
+  "name": "compra-facil-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Compra Fácil — tienda online para Panamá y Cuba",
+  "main": "server.js",
+  "scripts": {"start":"node server.js","dev":"node server.js"},
+  "engines": {"node":">=20"},
+  "dependencies": {"express":"^4.21.2","helmet":"^8.0.0","morgan":"^1.10.0","cookie-session":"^2.1.0","bcryptjs":"^2.4.3"}
+}

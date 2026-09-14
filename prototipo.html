@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compra Fácil — Recibe donde estés</title>
+<style>
+:root{--blue:#0755a5;--blue2:#063b78;--yellow:#ffc400;--ink:#172033;--muted:#6b7280;--bg:#f5f7fb;--card:#fff;--line:#e5e7eb;--green:#159447}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+button,input,select{font:inherit}button{cursor:pointer;border:0}
+.top{background:var(--blue2);color:#fff;font-size:13px;padding:8px 5%;display:flex;justify-content:space-between}
+.header{background:var(--blue);color:#fff;padding:14px 5%;display:flex;gap:24px;align-items:center;position:sticky;top:0;z-index:20}
+.logo{font-size:25px;font-weight:900;white-space:nowrap}.logo b{color:var(--yellow)}.tag{font-size:11px;display:block;text-align:center;font-weight:600}
+.search{flex:1;display:flex;background:#fff;border-radius:10px;overflow:hidden}.search input{flex:1;border:0;padding:12px 16px;outline:0}.search button{width:52px;background:var(--yellow)}
+.header-actions{display:flex;gap:15px;align-items:center;white-space:nowrap}.cart{position:relative}.badge{position:absolute;top:-9px;right:-9px;background:var(--yellow);color:#111;border-radius:50%;font-size:11px;padding:3px 6px;font-weight:800}
+.nav{background:#fff;padding:10px 5%;display:flex;gap:24px;border-bottom:1px solid var(--line);font-size:14px}.nav button{background:none;color:var(--ink)}
+.container{max-width:1240px;margin:auto;padding:22px 20px}.hero{background:linear-gradient(105deg,#0677d9,#0750a0);border-radius:18px;color:#fff;padding:42px;min-height:300px;display:flex;align-items:center;justify-content:space-between;overflow:hidden}.hero h1{font-size:44px;max-width:650px;margin:0 0 10px}.hero h1 span{color:var(--yellow)}.hero p{font-size:18px}.hero-art{font-size:100px;transform:rotate(-5deg)}.btn{background:var(--yellow);padding:12px 20px;border-radius:9px;font-weight:800}.btn.secondary{background:#fff;color:var(--blue)}.section-title{display:flex;justify-content:space-between;align-items:center;margin:30px 0 14px}.section-title h2{margin:0}.categories{display:grid;grid-template-columns:repeat(8,1fr);gap:12px}.cat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 8px;text-align:center;font-size:13px;transition:.2s}.cat:hover{transform:translateY(-3px);box-shadow:0 8px 20px #0001}.cat .ico{font-size:30px;display:block;margin-bottom:8px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.product{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;position:relative}.product .pic{height:170px;background:#f1f4f8;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:85px}.product h3{font-size:15px;margin:12px 0 6px}.stars{color:#f5a800;font-size:13px}.price{font-size:22px;font-weight:900;margin:8px 0}.stock{color:var(--green);font-size:12px}.product .btn{width:100%;margin-top:10px}.promo{background:var(--yellow);border-radius:14px;padding:25px;display:flex;justify-content:space-between;align-items:center;margin-top:24px}.ship{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}.shipbox{border-radius:14px;padding:24px;color:#fff;background:linear-gradient(120deg,#0755a5,#0b78ca)}.shipbox.cuba{background:linear-gradient(120deg,#0c5790,#1a77a9)}.shipbox h3{margin-top:0;font-size:23px}.shipbox li{margin:7px 0}
+footer{background:var(--blue2);color:#fff;margin-top:45px;padding:35px 5%}.footergrid{max-width:1240px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:25px}.footergrid h4{margin-top:0}.view{display:none}.view.active{display:block}
+.breadcrumb{color:var(--muted);font-size:13px;margin-bottom:18px}.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:30px}.bigpic{min-height:430px;background:#eef2f7;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:180px}.detail h1{font-size:32px}.detail .price{font-size:32px}.qty{display:flex;align-items:center;gap:12px;margin:15px 0}.qty button{width:36px;height:36px;border-radius:8px;background:#eef2f7}.checkout{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}.field{margin:12px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:5px}.field input,.field select{width:100%;padding:11px;border:1px solid var(--line);border-radius:8px}.summary-row{display:flex;justify-content:space-between;margin:12px 0}.total{font-size:22px;font-weight:900;border-top:1px solid var(--line);padding-top:15px}
+.admin{display:grid;grid-template-columns:220px 1fr;gap:20px}.sidebar{background:var(--blue2);color:#fff;border-radius:14px;padding:16px;height:max-content}.sidebar button{display:block;width:100%;background:none;color:#fff;text-align:left;padding:12px;border-radius:8px}.sidebar button:hover{background:#ffffff18}.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat{background:#fff;padding:18px;border-radius:12px;border:1px solid var(--line)}.stat strong{display:block;font-size:26px;margin-top:5px}
+.mobilebar{display:none}
+@media(max-width:900px){.categories{grid-template-columns:repeat(4,1fr)}.products{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:34px}.hero-art{font-size:70px}.header-actions{display:none}.checkout,.product-detail,.admin{grid-template-columns:1fr}.statgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.top{display:none}.header{padding:11px 14px;flex-wrap:wrap;gap:10px}.logo{font-size:20px}.search{order:3;flex-basis:100%}.nav{overflow:auto;gap:18px;padding:9px 14px}.container{padding:14px}.hero{padding:25px;min-height:270px}.hero h1{font-size:29px}.hero-art{font-size:45px}.categories{grid-template-columns:repeat(4,1fr);gap:7px}.cat{padding:12px 3px;font-size:10px}.cat .ico{font-size:24px}.products{gap:9px}.product{padding:9px}.product .pic{height:125px;font-size:60px}.product h3{font-size:13px}.price{font-size:18px}.ship{grid-template-columns:1fr}.promo{padding:18px}.footergrid{grid-template-columns:1fr 1fr}.mobilebar{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);z-index:30;justify-content:space-around;padding:9px}.mobilebar button{background:none;font-size:11px}.view{padding-bottom:70px}}
+</style>
+</head>
+<body>
+<div class="top"><span>🚚 Envíos a Panamá y Cuba</span><span>🔒 Compras protegidas · Atención al cliente</span></div>
+<header class="header">
+  <div class="logo" onclick="show('home')">🛍️ Compra <b>Fácil</b><span class="tag">Recibe donde estés</span></div>
+  <div class="search"><input id="search" placeholder="¿Qué estás buscando?" onkeydown="if(event.key==='Enter')searchProducts()"><button onclick="searchProducts()">🔎</button></div>
+  <div class="header-actions"><button class="btn secondary" onclick="show('orders')">📦 Mis pedidos</button><button class="btn secondary" onclick="show('account')">👤 Mi cuenta</button><button onclick="show('cart')" style="background:none;color:white;font-size:25px" class="cart">🛒<span class="badge" id="badge">0</span></button></div>
+</header>
+<nav class="nav"><button onclick="show('category')">☰ Todas las categorías</button><button onclick="show('category')">Ofertas</button><button onclick="show('category')">Más vendidos</button><button onclick="show('category')">Nuevos productos</button><button onclick="show('how')">¿Cómo comprar?</button><button onclick="show('contact')">Contacto</button></nav>
+
+<main class="container">
+<section id="home" class="view active">
+  <div class="hero"><div><h1>TODO LO QUE BUSCAS,<br><span>EN UN SOLO LUGAR</span></h1><p>Compra fácil. Recibe donde estés.</p><p>🚚 Envíos seguros · 🛡️ Compras protegidas · 🎧 Atención personalizada</p><button class="btn" onclick="show('category')">COMPRAR AHORA →</button></div><div class="hero-art">📦📱👜🎧</div></div>
+  <div class="section-title"><h2>Categorías principales</h2><a onclick="show('category')">Ver todas →</a></div>
+  <div class="categories">
+    <div class="cat" onclick="show('category')"><span class="ico">📱</span>Electrónica</div><div class="cat" onclick="show('category')"><span class="ico">🛋️</span>Hogar</div><div class="cat" onclick="show('category')"><span class="ico">🍳</span>Cocina</div><div class="cat" onclick="show('category')"><span class="ico">👕</span>Ropa</div><div class="cat" onclick="show('category')"><span class="ico">🧴</span>Cuidado personal</div><div class="cat" onclick="show('category')"><span class="ico">🔧</span>Herramientas</div><div class="cat" onclick="show('category')"><span class="ico">🧸</span>Niños</div><div class="cat" onclick="show('category')"><span class="ico">🎁</span>Regalos</div>
+  </div>
+  <div class="promo"><div><h2>🔥 OFERTAS ESPECIALES</h2><p>No te pierdas nuestras mejores promociones.</p></div><button class="btn" onclick="show('category')">Ver ofertas →</button></div>
+  <div class="section-title"><h2>Productos destacados</h2><a onclick="show('category')">Ver todos →</a></div>
+  <div id="homeProducts" class="products"></div>
+  <div class="ship"><div class="shipbox"><h3>🇵🇦 Envíos a Panamá</h3><ul><li>Entrega rápida</li><li>Seguimiento de pedido</li><li>Múltiples métodos de pago</li></ul></div><div class="shipbox cuba"><h3>🇨🇺 Envíos a Cuba</h3><ul><li>Opciones de entrega</li><li>Seguimiento de pedido</li><li>Información clara de costos</li></ul></div></div>
+</section>
+
+<section id="category" class="view"><div class="breadcrumb">Inicio / Productos</div><div class="section-title"><h2>Todos los productos</h2><select onchange="filterCategory(this.value)"><option value="all">Todas las categorías</option><option>Electrónica</option><option>Hogar</option><option>Cocina</option><option>Ropa</option></select></div><div id="catalog" class="products"></div></section>
+
+<section id="product" class="view"><div class="breadcrumb">Inicio / Producto</div><div class="product-detail panel"><div class="bigpic" id="detailPic">🎧</div><div class="detail"><div class="stars">★★★★★ (124)</div><h1 id="detailName">Audífonos inalámbricos Bluetooth</h1><p>Sonido de alta calidad, conexión estable y batería de larga duración. Ideales para el día a día.</p><div class="price" id="detailPrice">$24.99</div><div class="stock">● En stock</div><div class="field"><label>Recibir en</label><select id="country"><option>🇵🇦 Panamá</option><option>🇨🇺 Cuba</option></select></div><div class="qty"><button onclick="changeQty(-1)">−</button><b id="qty">1</b><button onclick="changeQty(1)">+</button></div><button class="btn" style="width:100%" onclick="addCurrent()">Agregar al carrito</button></div></div></section>
+
+<section id="cart" class="view"><div class="breadcrumb">Inicio / Carrito</div><h2>Carrito de compras</h2><div id="cartContent"></div></section>
+
+<section id="checkout" class="view"><div class="breadcrumb">Carrito / Finalizar compra</div><h2>Finalizar compra</h2><div class="checkout"><div class="panel"><h3>1. Datos de entrega</h3><div class="field"><label>Nombre completo</label><input placeholder="Nombre y apellido"></div><div class="field"><label>Teléfono</label><input placeholder="+507 / +53"></div><div class="field"><label>Dirección</label><input placeholder="Dirección de entrega"></div><div class="field"><label>País</label><select><option>Panamá</option><option>Cuba</option></select></div><h3>2. Método de pago</h3><div class="field"><select><option>Seleccionar método de pago</option><option>Tarjeta</option><option>Transferencia</option><option>Pago disponible para Cuba</option></select></div><button class="btn" style="width:100%" onclick="placeOrder()">CONFIRMAR PEDIDO</button></div><div class="panel"><h3>Resumen</h3><div id="checkoutSummary"></div></div></div></section>
+
+<section id="orders" class="view"><div class="breadcrumb">Mi cuenta / Mis pedidos</div><h2>Mis pedidos</h2><div class="panel"><b>Pedido #CF-1001</b><p>Audífonos inalámbricos × 1</p><p>Estado: <span class="stock">● Confirmado</span></p><small>El seguimiento aparecerá aquí cuando el pedido sea despachado.</small></div></section>
+<section id="account" class="view"><h2>Mi cuenta</h2><div class="panel"><h3>👤 Datos personales</h3><p>Gestiona tus datos, direcciones, métodos de pago y preferencias.</p><button class="btn">Editar perfil</button></div></section>
+<section id="how" class="view"><h2>¿Cómo comprar?</h2><div class="products"><div class="panel"><h3>1. 🔎 Busca</h3><p>Encuentra el producto que necesitas.</p></div><div class="panel"><h3>2. 🛒 Agrega</h3><p>Añádelo al carrito y revisa tu pedido.</p></div><div class="panel"><h3>3. 📍 Elige destino</h3><p>Selecciona Panamá o Cuba y completa la entrega.</p></div><div class="panel"><h3>4. ✅ Recibe</h3><p>Confirma el pago y sigue tu pedido.</p></div></div></section>
+<section id="contact" class="view"><h2>Contacto</h2><div class="panel"><h3>¿Necesitas ayuda?</h3><p>Atención al cliente de Compra Fácil.</p><div class="field"><label>Correo</label><input placeholder="tu@email.com"></div><div class="field"><label>Mensaje</label><input placeholder="¿En qué podemos ayudarte?"></div><button class="btn">Enviar mensaje</button></div></section>
+
+<section id="admin" class="view"><h2>Panel administrativo</h2><div class="admin"><div class="sidebar"><b>COMPRA FÁCIL</b><button>📊 Dashboard</button><button>📦 Pedidos</button><button>🛍️ Productos</button><button>📋 Categorías</button><button>👥 Clientes</button><button>💰 Ventas</button><button>⚙️ Configuración</button></div><div><div class="statgrid"><div class="stat">Ventas hoy<strong>$486</strong></div><div class="stat">Pedidos<strong>18</strong></div><div class="stat">Productos<strong>126</strong></div><div class="stat">Clientes<strong>74</strong></div></div><div class="panel" style="margin-top:18px"><h3>Pedidos recientes</h3><p>#CF-1008 · Panamá · $74.98 · <span class="stock">Procesando</span></p><p>#CF-1007 · Cuba · $129.00 · <span class="stock">Confirmado</span></p><p>#CF-1006 · Panamá · $34.99 · <span class="stock">Enviado</span></p></div></div></div></section>
+</main>
+<footer><div class="footergrid"><div><div class="logo">🛍️ Compra <b>Fácil</b></div><p>Recibe donde estés.</p></div><div><h4>Comprar</h4><p>Productos</p><p>Ofertas</p><p>Más vendidos</p></div><div><h4>Ayuda</h4><p>¿Cómo comprar?</p><p>Mis pedidos</p><p>Contacto</p></div><div><h4>Países</h4><p>🇵🇦 Panamá</p><p>🇨🇺 Cuba</p></div></div></footer>
+<div class="mobilebar"><button onclick="show('home')">🏠<br>Inicio</button><button onclick="show('category')">🔎<br>Buscar</button><button onclick="show('cart')">🛒<br>Carrito</button><button onclick="show('account')">👤<br>Cuenta</button></div>
+
+<script>
+const products=[
+{id:1,name:'Audífonos inalámbricos Bluetooth',price:24.99,icon:'🎧',cat:'Electrónica',rating:5},
+{id:2,name:'Smartwatch con monitor de salud',price:39.99,icon:'⌚',cat:'Electrónica',rating:5},
+{id:3,name:'Juego de ollas de 10 piezas',price:59.99,icon:'🍳',cat:'Cocina',rating:5},
+{id:4,name:'Tenis deportivos unisex',price:34.99,icon:'👟',cat:'Ropa',rating:5},
+{id:5,name:'Freidora de aire 5 L',price:69.99,icon:'🍟',cat:'Cocina',rating:4},
+{id:6,name:'Lámpara LED de escritorio',price:19.99,icon:'💡',cat:'Hogar',rating:5},
+{id:7,name:'Mochila urbana resistente',price:29.99,icon:'🎒',cat:'Ropa',rating:4},
+{id:8,name:'Organizador multiuso',price:14.99,icon:'🗄️',cat:'Hogar',rating:5}
+];
+let cart=[],current=products[0],qty=1;
+function money(n){return '$'+n.toFixed(2)}
+function card(p){return `<div class="product"><div class="pic">${p.icon}</div><h3>${p.name}</h3><div class="stars">${'★'.repeat(p.rating)}${'☆'.repeat(5-p.rating)}</div><div class="price">${money(p.price)}</div><div class="stock">● En stock</div><button class="btn" onclick="openProduct(${p.id})">Ver producto</button></div>`}
+function render(list,el){document.getElementById(el).innerHTML=list.map(card).join('')}
+function show(id){document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});if(id==='category')render(products,'catalog');if(id==='cart')renderCart();if(id==='checkout')renderCheckout()}
+function openProduct(id){current=products.find(p=>p.id===id);qty=1;document.getElementById('detailName').textContent=current.name;document.getElementById('detailPrice').textContent=money(current.price);document.getElementById('detailPic').textContent=current.icon;document.getElementById('qty').textContent=qty;show('product')}
+function changeQty(n){qty=Math.max(1,qty+n);document.getElementById('qty').textContent=qty}
+function addCurrent(){for(let i=0;i<qty;i++)cart.push(current);updateBadge();show('cart')}
+function updateBadge(){document.getElementById('badge').textContent=cart.length}
+function renderCart(){let c=document.getElementById('cartContent');if(!cart.length){c.innerHTML='<div class="panel"><h3>Tu carrito está vacío</h3><button class="btn" onclick="show(\\'category\\')">Explorar productos</button></div>';return}let total=cart.reduce((s,p)=>s+p.price,0);c.innerHTML='<div class="checkout"><div class="panel">'+cart.map((p,i)=>`<div style="display:flex;gap:14px;align-items:center;border-bottom:1px solid var(--line);padding:12px 0"><span style="font-size:45px">${p.icon}</span><div style="flex:1"><b>${p.name}</b><div>${money(p.price)}</div></div><button onclick="cart.splice(${i},1);updateBadge();renderCart()">🗑️</button></div>`).join('')+'</div><div class="panel"><h3>Resumen</h3><div class="summary-row"><span>Subtotal</span><b>'+money(total)+'</b></div><div class="summary-row"><span>Envío</span><b>Se calcula al finalizar</b></div><div class="total">'+money(total)+'</div><button class="btn" style="width:100%;margin-top:15px" onclick="show(\\'checkout\\')">CONTINUAR CON LA COMPRA</button></div></div>'}
+function renderCheckout(){let total=cart.reduce((s,p)=>s+p.price,0);document.getElementById('checkoutSummary').innerHTML=cart.map(p=>`<div class="summary-row"><span>${p.name}</span><b>${money(p.price)}</b></div>`).join('')+`<div class="total">${money(total)}</div>`}
+function placeOrder(){alert('¡Pedido creado! En la versión real se conectará con el sistema de pagos y seguimiento.');cart=[];updateBadge();show('orders')}
+function filterCategory(v){render(v==='all'?products:products.filter(p=>p.cat===v),'catalog')}
+function searchProducts(){let q=document.getElementById('search').value.toLowerCase();let list=products.filter(p=>p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q));show('category');render(list.length?list:products,'catalog')}
+render(products.slice(0,4),'homeProducts');
+</script>
+</body>
+</html>
